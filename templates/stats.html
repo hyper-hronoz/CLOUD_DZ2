@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block title %}Последние результаты{% endblock %}
+
+{% block content %}
+  <section class="hero compact">
+    <p class="eyebrow">Статистика</p>
+    <h1>Последние ответы</h1>
+    <p class="lead">На странице отображаются последние {{ total }} записей из файла результатов.</p>
+  </section>
+
+  <section class="card">
+    {% if results %}
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Время</th>
+              <th>Фамилия</th>
+              <th>Имя</th>
+              <th>Баллы</th>
+              <th>Оценка</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for row in results %}
+              <tr>
+                <td>{{ row.submitted_at }}</td>
+                <td>{{ row.last_name }}</td>
+                <td>{{ row.first_name }}</td>
+                <td>{{ row.score }}</td>
+                <td>{{ row.rating_label }}</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    {% else %}
+      <p>Пока нет ни одного ответа.</p>
+    {% endif %}
+  </section>
+{% endblock %}

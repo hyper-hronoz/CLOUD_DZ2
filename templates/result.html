@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}Результат{% endblock %}
+
+{% block content %}
+  <section class="card result-card">
+    <p class="eyebrow">Результат теста</p>
+    <h1>{{ last_name }} {{ first_name }}</h1>
+    <p class="score">{{ score }} / {{ total }}</p>
+    <p class="lead">{{ rating }}</p>
+    <div class="actions">
+      <a href="{{ url_for('index') }}">Пройти еще раз</a>
+      <a href="{{ url_for('stats') }}">Посмотреть последние результаты</a>
+    </div>
+  </section>
+{% endblock %}
